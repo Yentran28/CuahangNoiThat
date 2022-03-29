@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #14577F;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllerr.ControllerSANPHAM">
+   <children>
+      <AnchorPane layoutX="12.0" layoutY="154.0" prefHeight="531.0" prefWidth="267.0" style="-fx-background-color: #364253;">
+         <children>
+            <TextField fx:id="txtmasp" layoutX="22.0" layoutY="26.0" promptText="Mã sản phẩm">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txtten" layoutX="22.0" layoutY="65.0" promptText="Tên sản phẩm">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txtvl" layoutX="22.0" layoutY="104.0" promptText="Vật liệu">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txtthbh" layoutX="22.0" layoutY="143.0" promptText="Thời hạn bảo hành">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txtsl" layoutX="22.0" layoutY="182.0" promptText="Số lượng tồn ">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txtgia" layoutX="22.0" layoutY="221.0" promptText="Giá">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txtmatl" layoutX="22.0" layoutY="260.0" promptText="Mã thể loại">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txtmakho" layoutX="22.0" layoutY="299.0" promptText="Mã kho">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <Button fx:id="btnthem" layoutY="352.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="39.0" prefWidth="91.0" text="Thêm">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="btnxoa" layoutX="92.0" layoutY="352.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="39.0" prefWidth="91.0" text="Xoá ">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="btnsua" layoutX="184.0" layoutY="352.0" mnemonicParsing="false" onAction="#handleUpdate" prefHeight="39.0" prefWidth="82.0" text="Sửa">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="btnthoat" layoutX="156.0" layoutY="464.0" mnemonicParsing="false" onAction="#CancelButtonOnAction" prefHeight="39.0" prefWidth="101.0" text="Thoát">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="txtsearch" layoutX="341.0" layoutY="109.0" prefHeight="26.0" prefWidth="238.0" promptText="Search">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TableView fx:id="tablesp" layoutX="282.0" layoutY="154.0" prefHeight="531.0" prefWidth="617.0">
+         <columns>
+            <TableColumn fx:id="colmasp" prefWidth="69.5999755859375" text="MASP" />
+            <TableColumn fx:id="colten" prefWidth="112.79998779296875" text="TENSP" />
+            <TableColumn fx:id="colvl" prefWidth="62.400054931640625" text="VATLIEU" />
+            <TableColumn fx:id="colthbh" prefWidth="75.20001220703125" text="THBH" />
+            <TableColumn fx:id="colsl" prefWidth="48.0" text="SLTON" />
+            <TableColumn fx:id="colgia" prefWidth="104.7999267578125" text="GIA" />
+            <TableColumn fx:id="colmatl" prefWidth="69.5999755859375" text="MATL" />
+            <TableColumn fx:id="colmakho" prefWidth="77.60009765625" text="MAKHO" />
+         </columns>
+      </TableView>
+      <Label layoutX="380.0" layoutY="55.0" text="SẢN PHẨM" textFill="#f5f4f4">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

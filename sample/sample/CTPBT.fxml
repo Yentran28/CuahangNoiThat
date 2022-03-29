@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #14577F;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerCTPBT">
+   <children>
+      <AnchorPane layoutY="154.0" prefHeight="531.0" prefWidth="278.0" style="-fx-background-color: #364253;">
+         <children>
+            <TextField fx:id="txtmabt" layoutX="27.0" layoutY="46.0" prefHeight="39.0" prefWidth="224.0" promptText="Mã bảo trì">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txtdg" layoutX="28.0" layoutY="126.0" prefHeight="39.0" prefWidth="224.0" promptText="Đơn giá bảo trì">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <Button fx:id="btnthem" layoutX="14.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="39.0" prefWidth="98.0" text="Thêm">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="btnxoa" layoutX="168.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="39.0" prefWidth="98.0" text="Xoá ">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <TextField fx:id="txtsl" layoutX="28.0" layoutY="165.0" prefHeight="39.0" prefWidth="224.0" promptText="Số lượng bảo trì">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <Button fx:id="btnthoat" layoutX="169.0" layoutY="399.0" mnemonicParsing="false" onAction="#CancelButtonOnAction" prefHeight="39.0" prefWidth="98.0" text="Thoát">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <ComboBox fx:id="cbomasp" layoutX="27.0" layoutY="86.0" prefHeight="39.0" prefWidth="224.0" promptText="Mã sản phẩm" />
+         </children>
+      </AnchorPane>
+      <TableView fx:id="tablectpbt" layoutX="291.0" layoutY="154.0" prefHeight="531.0" prefWidth="527.0">
+         <columns>
+            <TableColumn fx:id="colmasp" prefWidth="95.20001220703125" text="MASP" />
+            <TableColumn fx:id="colmabt" prefWidth="117.5999755859375" text="MABT" />
+            <TableColumn fx:id="coldg" prefWidth="214.4000244140625" text="DONGIABT" />
+            <TableColumn fx:id="colsl" prefWidth="98.4000244140625" text="SLBT" />
+         </columns>
+      </TableView>
+      <Label layoutX="269.0" layoutY="69.0" text="CHI TIẾT PHIẾU BẢO TRÌ" textFill="#f5f4f4">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

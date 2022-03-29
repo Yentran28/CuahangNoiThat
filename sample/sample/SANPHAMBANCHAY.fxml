@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #364253;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllerr.CotrollerSANPHAMBANCHAY">
+   <children>
+      <DatePicker fx:id="txttn" layoutX="158.0" layoutY="139.0" prefHeight="32.0" prefWidth="174.0" />
+      <DatePicker fx:id="txtdn" layoutX="158.0" layoutY="200.0" prefHeight="32.0" prefWidth="174.0" />
+      <TableView fx:id="tablespbc" layoutX="52.0" layoutY="286.0" prefHeight="392.0" prefWidth="706.0">
+         <columns>
+            <TableColumn fx:id="colmsp" prefWidth="208.79998779296875" text="MÃ SẢN PHẨM" />
+            <TableColumn fx:id="colslb" prefWidth="208.79998779296875" text="SỐ LƯỢNG BÁN" />
+         </columns>
+      </TableView>
+      <Button fx:id="btnLOAD" layoutX="377.0" layoutY="161.0" mnemonicParsing="false" onAction="#LoadDataTableView" prefHeight="38.0" prefWidth="106.0" text="LOAD">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="51.0" layoutY="139.0" text="Từ ngày " textFill="#eadcdc">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="200.0" text="Đến ngày " textFill="#eadcdc">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnthoat" layoutX="693.0" layoutY="223.0" mnemonicParsing="false" onAction="#handlecancel" text="THOÁT">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Label layoutX="230.0" layoutY="62.0" text="TOP SẢN PHẨM BÁN CHẠY" textFill="#f5f2f2">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

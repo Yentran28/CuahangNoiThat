@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #14577F;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllerr.ControllerNHANVIEN">
+   <children>
+      <AnchorPane layoutY="148.0" prefHeight="531.0" prefWidth="278.0" style="-fx-background-color: #364253;">
+         <children>
+            <TextField fx:id="txtma" layoutX="28.0" layoutY="37.0" promptText="Mã nhân viên">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txtten" layoutX="28.0" layoutY="76.0" promptText="Tên nhân viên">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txttk" layoutX="28.0" layoutY="115.0" promptText="Tài khoản">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txtmk" layoutX="28.0" layoutY="154.0" promptText="Mật khẩu">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txtsdt" layoutX="28.0" layoutY="193.0" promptText="SĐT">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txtdiachi" layoutX="28.0" layoutY="232.0" promptText="Địa chỉ ">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txtemail" layoutX="28.0" layoutY="271.0" promptText="Email">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <Button fx:id="btnthem" layoutX="-1.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleAddNhanVien" prefHeight="39.0" prefWidth="94.0" text="Thêm">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="btnxoa" layoutX="94.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleDeleteNhanVien" prefHeight="39.0" prefWidth="93.0" text="Xoá ">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="btnsua" layoutX="189.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleUpdateNhanVien" prefHeight="39.0" prefWidth="86.0" text="Sửa">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="btnthoat" layoutX="160.0" layoutY="450.0" mnemonicParsing="false" onAction="#CancelButtonOnAction" prefHeight="39.0" prefWidth="104.0" text="Thoát">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="txtsearch" layoutX="288.0" layoutY="94.0" promptText="Search">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TableView fx:id="tablenhanvien" layoutX="282.0" layoutY="148.0" prefHeight="531.0" prefWidth="509.0">
+        <columns>
+          <TableColumn fx:id="columma" prefWidth="51.20001220703125" text="MANV" />
+          <TableColumn fx:id="columten" prefWidth="121.5999755859375" text="TENNV" />
+            <TableColumn fx:id="columtk" prefWidth="82.4000244140625" text="TAIKHOAN" />
+            <TableColumn fx:id="colummk" prefWidth="72.00006103515625" text="MATKHAU" />
+            <TableColumn fx:id="columsdt" prefWidth="61.5999755859375" text="SĐT" />
+            <TableColumn fx:id="columdiachi" prefWidth="64.79998779296875" text="DIACHI" />
+            <TableColumn fx:id="columemail" prefWidth="57.5999755859375" text="EMAIL" />
+        </columns>
+      </TableView>
+      <Label layoutX="326.0" layoutY="45.0" text="NHÂN VIÊN" textFill="#f5f4f4">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

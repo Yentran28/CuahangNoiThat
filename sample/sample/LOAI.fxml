@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #14577F;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllerr.ControllerLOAI">
+   <children>
+      <AnchorPane layoutX="14.0" layoutY="154.0" prefHeight="531.0" prefWidth="278.0" style="-fx-background-color: #364253;">
+         <children>
+            <TextField fx:id="txtmatl" layoutX="27.0" layoutY="44.0" promptText="Mã thể loại">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txtmancc" layoutX="27.0" layoutY="83.0" promptText="Mã nhà cung cấp">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txttentl" layoutX="27.0" layoutY="122.0" promptText="Tên thể loại">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <Button fx:id="btnthem" layoutX="-1.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="39.0" prefWidth="97.0" text="Thêm">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="btnxoa" layoutX="98.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="26.0" prefWidth="82.0" text="Xoá ">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="btnsua" layoutX="181.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleUpdate" prefHeight="26.0" prefWidth="82.0" text="Sửa">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="btnthoat" layoutX="155.0" layoutY="450.0" mnemonicParsing="false" onAction="#CancelButtonOnAction" prefHeight="39.0" prefWidth="109.0" text="Thoát">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+         </children>
+      </AnchorPane>
+      <TableView fx:id="tableloai" layoutX="305.0" layoutY="154.0" prefHeight="531.0" prefWidth="495.0">
+         <columns>
+            <TableColumn fx:id="colummatl" prefWidth="125.60003662109375" text="MATL" />
+            <TableColumn fx:id="colummancc" prefWidth="132.79998779296875" text="MANCC" />
+            <TableColumn fx:id="columtentl" prefWidth="236.0" text="TENTL" />
+         </columns>
+      </TableView>
+      <Label layoutX="348.0" layoutY="62.0" text="LOẠI" textFill="#f5f4f4">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
