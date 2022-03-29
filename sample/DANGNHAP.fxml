@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #364253;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerDANGNHAP">
+   <children>
+      <Button fx:id="btndn" layoutX="162.0" layoutY="256.0" mnemonicParsing="false" onAction="#login" prefHeight="40.0" prefWidth="122.0" style="-fx-background-color: #5e5a74;" text="Đăng nhập" textFill="#f0eded">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btndk" layoutX="337.0" layoutY="256.0" mnemonicParsing="false" onAction="#dangky" prefHeight="40.0" prefWidth="102.0" style="-fx-background-color: #5e5a74;" text="Đăng ký" textFill="#f0eded">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnthoat" layoutX="497.0" layoutY="338.0" mnemonicParsing="false" onAction="#handlecancel" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #5e5a74;" text="Thoát" textFill="#f0eded">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
+      <TextField fx:id="txttk" layoutX="200.0" layoutY="112.0" promptText="Tài khoản">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="29.0" layoutY="31.0" text="PHẦN MỀM QUẢN LÝ BÁN HÀNG NỘI THẤT" textFill="#f5eeee">
+         <font>
+            <Font name="Arial" size="26.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="150.0" fitWidth="143.0" layoutX="32.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Pic/gip1111hy.gif" />
+         </image>
+      </ImageView>
+      <PasswordField fx:id="txtmk" layoutX="202.0" layoutY="173.0" prefHeight="34.0" prefWidth="226.0" promptText="Mật khẩu">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </PasswordField>
+   </children>
+</AnchorPane>

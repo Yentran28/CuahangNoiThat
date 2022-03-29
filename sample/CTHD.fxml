@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #14577F;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllerr.ControllerCTHD">
+   <children>
+      <AnchorPane layoutY="154.0" prefHeight="531.0" prefWidth="278.0" style="-fx-background-color: #364253;">
+         <children>
+            <TextField fx:id="txtmahd" layoutX="27.0" layoutY="51.0" promptText="Mã hoá đơn">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txtsl" layoutX="27.0" layoutY="129.0" promptText="Số lượng">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="txtdg" disable="true" editable="false" layoutX="28.0" layoutY="246.0" promptText="Đơn gía">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <Button fx:id="btnthem" layoutX="14.0" layoutY="319.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="39.0" prefWidth="110.0" text="Thêm">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="btnxoa" layoutX="154.0" layoutY="319.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="39.0" prefWidth="103.0" text="Xoá ">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="btnthoat" layoutX="76.0" layoutY="410.0" mnemonicParsing="false" onAction="#handlecancel" prefHeight="39.0" prefWidth="125.0" text="Thoát">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <ComboBox fx:id="cbomasp" layoutX="27.0" layoutY="90.0" prefHeight="39.0" prefWidth="224.0" promptText="Mã sản phẩm" />
+         </children>
+      </AnchorPane>
+      <TableView fx:id="tablecthd" layoutX="295.0" layoutY="154.0" prefHeight="531.0" prefWidth="514.0">
+         <columns>
+            <TableColumn fx:id="colmahd" prefWidth="128.0" text="MAHD" />
+            <TableColumn fx:id="colmasp" prefWidth="124.79998779296875" text="MASP" />
+            <TableColumn fx:id="colsl" prefWidth="92.79998779296875" text="SL" />
+            <TableColumn fx:id="coldg" prefWidth="170.40008544921875" text="DONGIA" />
+         </columns>
+      </TableView>
+      <Label layoutX="297.0" layoutY="82.0" text="CHI TIẾT HOÁ ĐƠN" textFill="#f5f4f4">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

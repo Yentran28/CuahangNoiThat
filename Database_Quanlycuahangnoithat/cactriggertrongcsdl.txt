@@ -1,0 +1,190 @@
+---------------------------tạo trigger cập nhật chi tiết hóa đơn mới------------------------------
+CREATE TRIGGER UPDATE_CTHD_C14 
+ON CTHD
+FOR UPDATE
+AS
+	DECLARE @SL_CU INT,
+		@SL_MOI INT,
+		@GIA_CU MONEY,
+		@GIA_MOI MONEY,
+		@SOHD_CU INT,
+		@SOHD_MOI INT
+	SELECT @GIA_CU=DONGIA,@SL_CU=SL,@SOHD_CU=MAHD
+	FROM DELETED A,SANPHAM B
+	WHERE A.MASP=B.MASP
+
+	SELECT @GIA_CU=DONGIA,@SL_CU=SL,@SOHD_CU=MAHD
+	FROM INSERTED A,SANPHAM B 
+	WHERE A.MASP=B.MASP
+
+	IF(@SOHD_CU=@SOHD_MOI)
+		BEGIN 
+			UPDATE dbo.HOADON
+			SET TONGHD=TONGHD+@SL_MOI*@GIA_MOI-@SL_CU*@GIA_CU
+			WHERE MAHD=@SOHD_CU
+		END
+	ELSE
+		BEGIN
+			UPDATE dbo.HOADON
+			SET TONGHD=TONGHD-@SL_CU*@GIA_CU
+			WHERE MAHD=@SOHD_CU
+			UPDATE dbo.HOADON
+			SET TONGHD=TONGHD+@SL_MOI*@GIA_MOI
+			WHERE MAHD=@SOHD_MOI
+		END
+	PRINT'DA UPDATE 1 CTHD VA UPDATE LAI TRIGIA CUA HOADON TUONG UNG'
+
+----------------------------------------tạo trigger đơn giá---------------------------------------
+TRIGGER DONGIA*SL
+---------------------cách 1-----------------------
+create trigger AUTODONGIA
+    on dbo.CTHD
+    for insert, update
+    as
+    if update(SL)
+    begin
+    	update 
+    		dbo.CTHD
+    	set 
+    		DonGia = dbo.CTHD.SL * dbo.SANPHAM.Gia
+    	from 
+    		inserted I,
+    		dbo.SANPHAM  , 
+    		dbo.CTHD
+    	where 
+    		(dbo.SANPHAM.MaSP = I.MaSP)
+    		and (dbo.SANPHAM.MaSP = CTHD.MaSP)
+    end
+	go
+-------------------cách 2--------------------------------
+CREATE TRIGGER AUTODATE
+ON HOADON
+FOR UPDATE
+AS
+	BEGIN
+	UPDATE HOADON
+	SET NgayLap = GETDATE()
+	FROM inserted i
+	WHERE i.MaHD = HOADON.MaHD
+	END
+GO
+----------------------------------------------tạo trigger nếu bán thì trừ đi số lượng trong bảng sản phẩm-----------------------------------
+
+CREATE TRIGGER SLBANLONHONSLCON
+ON dbo.CTHD FOR INSERT
+AS
+BEGIN
+	DECLARE @soluongcon INT;
+	DECLARE @soluongban INT;
+	SELECT @soluongban = inserted.SL FROM inserted;
+	SELECT @soluongcon = dbo.SANPHAM.SLTON FROM inserted, dbo.SANPHAM WHERE inserted.MASP = dbo.SANPHAM.MASP;
+	IF (@soluongban > @soluongcon)
+	BEGIN
+		RAISERROR('LOI', 16, 1)
+		ROLLBACK TRANSACTION;
+	END
+	ELSE
+	BEGIN
+		UPDATE dbo.SANPHAM SET SLTON = SLTON - @soluongban FROM dbo.SANPHAM, inserted WHERE inserted.MASP = dbo.SANPHAM.MASP;
+	END
+END
+GO
+
+
+---------------------------------------------autoinsert 1 hoá đơn với TONGHD bắt đầu bằng 0-------------------------------------------------------------------------------------
+CREATE TRIGGER insertTongHD
+--ON HOADON
+--FOR INSERT 
+--AS 
+--	UPDATE  HOADON
+--	SET     TONGHD=0
+--	WHERE   MAHD=(SELECT MAHD FROM INSERTED)
+--	PRINT'DA INSERT 1 HOADON VOI TRIGIA BAN DAU LA 0 VND'
+
+---------------------------------------------------autoinsert 1 phiếu bảo trì với TONGPHIBT bắt đầu bằng 0---------------------------------------------------------------
+--CREATE TRIGGER insertTONGPHIBT
+--ON PHIEUBAOTRI
+--FOR INSERT 
+--AS 
+--	UPDATE  PHIEUBAOTRI
+--	SET     TONGPHIBT=0
+--	WHERE   MABT=(SELECT MABT FROM INSERTED)
+--	PRINT'DA INSERT 1 PHIEUBT VOI TONGPHIBT BAN DAU LA 0 VND'
+
+
+----------------------------------------------------tự động điền NGAYLAP trong bảng HOADON = ngày hiện tại-----------------------------------------------------------------------
+--CREATE TRIGGER AUTODATE
+--ON HOADON
+--FOR  insert
+--AS
+--	BEGIN
+--	UPDATE HOADON
+--	SET NgayLap = GETDATE()
+--	FROM inserted i
+--	WHERE i.MaHD = HOADON.MaHD
+--	END
+
+----------------------------------------------------tự động điền NGAYBT trong bảng PHIEUBAOTRI = ngày hiện tại------------------------------------------------------------------
+--CREATE TRIGGER AUTODATEBT
+--ON PHIEUBAOTRI
+--FOR insert
+--AS	
+--		BEGIN
+--		UPDATE PHIEUBAOTRI
+--		SET Ngaybt = GETDATE()
+--		FROM inserted i
+--		WHERE i.MaBT = PHIEUBAOTRI.MaBT
+--		END
+
+-------------------------------------------------tự động điền NGAYNHAP trong bảng PHIEUNHAPKHO = ngày hiện tại-----------------------------------------------------------------
+--CREATE TRIGGER AUTODATENGAYNHAP
+--ON PHIEUNHAPKHO
+--FOR insert
+--AS	
+--		BEGIN
+--		UPDATE PHIEUNHAPKHO
+--		SET NGAYNHAP = GETDATE()		
+--		where MAPN=(select MAPN from inserted)
+--		END
+
+---------------------------------------------------------nếu bán thì trừ số lượng trong bảng SANPHAM----------------------------------------------------------------------
+--CREATE TRIGGER SLBANLONHONSLCON
+--ON dbo.CTHD FOR INSERT
+--AS
+--BEGIN
+--	DECLARE @soluongcon INT;
+--	DECLARE @soluongban INT;
+--	SELECT @soluongban = inserted.SL FROM inserted;
+--	SELECT @soluongcon = dbo.SANPHAM.SLTON FROM inserted, dbo.SANPHAM WHERE inserted.MASP = dbo.SANPHAM.MASP;
+--	IF (@soluongban > @soluongcon)
+--	BEGIN
+--		RAISERROR('LOI', 16, 1)
+--		ROLLBACK TRANSACTION;
+--	END
+--	ELSE
+--	BEGIN
+--		UPDATE dbo.SANPHAM SET SLTON = SLTON - @soluongban FROM dbo.SANPHAM, inserted WHERE inserted.MASP = dbo.SANPHAM.MASP;
+--	END
+--END
+
+---------------------------------------nếu nhập thì tăng số lượng tồn trong bảng SANPHAM----------------------------------------------------------------------
+--CREATE TRIGGER NHAPTANGSLTON
+--ON dbo.CTPN FOR INSERT
+--AS
+--BEGIN
+--	DECLARE @soluongton INT;
+--	DECLARE @soluongnhap INT;
+--	SELECT @soluongnhap = inserted.SLNHAP FROM inserted;
+--	SELECT @soluongton = dbo.SANPHAM.SLTON FROM inserted, dbo.SANPHAM WHERE inserted.MASP = dbo.SANPHAM.MASP;
+--	IF (@soluongnhap =0)
+--	BEGIN
+--		RAISERROR('SL NHAP KHONG DUOC = 0', 16, 1)
+--		ROLLBACK TRANSACTION;
+--	END
+--	ELSE
+--	BEGIN
+--		UPDATE dbo.SANPHAM SET SLTON = SLTON + @soluongnhap FROM dbo.SANPHAM, inserted WHERE inserted.MASP = dbo.SANPHAM.MASP;
+--	END
+--END
+
+
